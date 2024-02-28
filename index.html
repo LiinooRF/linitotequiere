@@ -4,79 +4,82 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Ti</title>
+    <title>pa ti</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
 </head>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
-    * {
-        font-family: Poppins;
-        font-size: 24px;
+* {
+    font-family: Poppins;
+    font-size: 24px;
+}
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0b1522;
+}
+
+.heart {
+    height: 150px;
+    width: 150px;
+    background-color: green; /* Color cambiado a verde */
+    position: relative;
+    transform: rotate(45deg);
+    box-shadow: -20px 20px 150px #32cd32; /* Sombra ajustada al nuevo color verde */
+    animation: palpitar 0.5s linear infinite alternate;
+    
+}
+.contenido {
+     position: absolute;
+     margin-bottom: 50px;
+     text-align: center;
+     font-style: Poppins;
+}
+h1, h2 {
+    color: white;
+}
+
+@keyframes palpitar {
+    0% {
+        transform: rotate(45deg) scale(1.10);
     }
-    body {
-        margin: 0;
-        padding: 0;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #0b1522;
+    80% {
+        transform: rotate(45deg) scale(1.0);
     }
-    .heart {
-        position: relative;
-        width: 150px;
-        height: 150px;
-        background-color: #00ff00; /* Color del corazón ajustado a verde */
-        transform: rotate(45deg);
-        animation: palpitar 0.5s linear infinite alternate;
-    }
-    .heart::before, .heart::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        background-color: #00ff00; /* Color ajustado a verde */
-    }
-    .heart::before {
-        left: 50%;
-        transform: translate(-50%, -50%) rotate(-45deg);
-        box-shadow: -10px 0 15px #32cd32; /* Sombra ajustada a un tono de verde */
-    }
-    .heart::after {
-        left: 0;
-        transform: translate(50%, -50%) rotate(-45deg);
-        box-shadow: 10px 0 15px #32cd32; /* Sombra ajustada a un tono de verde */
-    }
-    @keyframes palpitar {
-        0% {
-            transform: scale(1);
-        }
-        50% {
-            transform: scale(1.1);
-        }
-        100% {
-            transform: scale(1);
-        }
-    }
-    .contenido {
-        position: absolute;
-        color: white;
-        text-align: center;
-        font-size: 24px;
-        top: 50%; /* Ajustado para centrar verticalmente */
-        left: 50%; /* Ajustado para centrar horizontalmente */
-        transform: translate(-50%, -50%); /* Ajuste para centrar exactamente el texto */
-    }
+    100% {
+        transform: rotate(45deg) scale(0.8);
+    } 
+}
+.heart::before, .heart::after {
+    content: "";
+    position: absolute;
+    height: 150px;
+    width: 150px;
+    background: green; /* Color cambiado a verde */
+    border-radius: 50%;
+    box-shadow: 20px 20px 150px #32cd32; /* Sombra ajustada al nuevo color verde */
+}
+.heart::before {
+    top: -50%;
+}
+.heart::after {
+    right: -50%;
+}
+
 </style>
 <body>
     <div class="heart"></div>
+
     <div class="contenido">
-        <h2>Maria,</h2>
-        <h2>Lino te ama :)</h2>
+        <h2>Maria Lino</h2>
+        <h2>te ama :)</h2>
     </div>
+
 </body>
 </html>
