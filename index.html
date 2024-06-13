@@ -1,86 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pa ti</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <title>Mensaje Bonito</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .message {
+            background: white;
+            padding: 40px 60px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            font-size: 32px;
+            color: #ff6f61;
+            position: relative;
+            animation: fadeIn 2s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .message .emoji {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        .message::before, .message::after {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            z-index: -1;
+            border-radius: 20px;
+            filter: blur(15px);
+            opacity: 0.7;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
 </head>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
-* {
-    font-family: Poppins;
-    font-size: 24px;
-}
-body {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #0b1522;
-}
-
-.heart {
-    height: 150px;
-    width: 150px;
-    background-color: green; /* Color cambiado a verde */
-    position: relative;
-    transform: rotate(45deg);
-    box-shadow: -20px 20px 150px #32cd32; /* Sombra ajustada al nuevo color verde */
-    animation: palpitar 0.5s linear infinite alternate;
-    
-}
-.contenido {
-     position: absolute;
-     margin-bottom: 50px;
-     text-align: center;
-     font-style: Poppins;
-}
-h1, h2 {
-    color: white;
-}
-
-@keyframes palpitar {
-    0% {
-        transform: rotate(45deg) scale(1.10);
-    }
-    80% {
-        transform: rotate(45deg) scale(1.0);
-    }
-    100% {
-        transform: rotate(45deg) scale(0.8);
-    } 
-}
-.heart::before, .heart::after {
-    content: "";
-    position: absolute;
-    height: 150px;
-    width: 150px;
-    background: green; /* Color cambiado a verde */
-    border-radius: 50%;
-    box-shadow: 20px 20px 150px #32cd32; /* Sombra ajustada al nuevo color verde */
-}
-.heart::before {
-    top: -50%;
-}
-.heart::after {
-    right: -50%;
-}
-
-</style>
 <body>
-    <div class="heart"></div>
-
-    <div class="contenido">
-        <h2>Maria Lino</h2>
-        <h2>te ama :)</h2>
+    <div class="message">
+        <div class="emoji">💖</div>
+        Sí, si quiero ser tu novio.
     </div>
-
 </body>
 </html>
 
