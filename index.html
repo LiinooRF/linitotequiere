@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Puzzle Romántico</title>
+    <title>de linito para maria</title>
     <style>
         body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            background-color: #ffe4e1;
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #f0f0f0;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -24,12 +24,12 @@
         }
 
         h1 {
-            color: #ff69b4;
+            color: #333;
             font-size: 36px;
         }
 
         p {
-            color: #ff1493;
+            color: #555;
             font-size: 18px;
         }
 
@@ -49,10 +49,10 @@
             align-items: center;
             font-size: 24px;
             font-weight: bold;
-            background-color: #ffb6c1;
+            background-color: #87CEEB;
             color: white;
             cursor: pointer;
-            border: 2px solid #ff69b4;
+            border: 2px solid #4682B4;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
         }
@@ -64,25 +64,25 @@
         .message {
             display: none;
             font-size: 20px;
-            color: #ff1493;
+            color: #4682B4;
             margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Puzzle Romántico</h1>
-        <p>Arrastra y suelta las piezas para formar el mensaje:</p>
+        <h1>ola maria</h1>
+        <p>no me abandones de nuevo :C</p>
         <div class="puzzle-container" id="puzzle-container">
             <!-- Las piezas del puzzle se generan aquí -->
         </div>
-        <div class="message" id="message">¡Te amo con todo mi corazón!</div>
+        <div class="message" id="message">Te quiero mucho, mi amor.</div>
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const puzzleContainer = document.getElementById('puzzle-container');
             const messageElement = document.getElementById('message');
-            const solution = ['T', 'e', ' ', 'a', 'm', 'o', ' ', '♥', '!'];
+            const solution = ['T', 'e', ' ', 'q', 'u', 'i', 'e', 'r', 'o'];
             const shuffled = [...solution];
             shuffle(shuffled);
 
