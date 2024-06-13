@@ -6,8 +6,8 @@
     <title>de linito para maria</title>
     <style>
         body {
-            font-family: 'Times New Roman', Times, serif;
-            background-color: #f0f0f0;
+            font-family: 'Comic Sans MS', sans-serif;
+            background-color: #ffe4e1;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -24,12 +24,12 @@
         }
 
         h1 {
-            color: #333;
+            color: #ff69b4;
             font-size: 36px;
         }
 
         p {
-            color: #555;
+            color: #ff1493;
             font-size: 18px;
         }
 
@@ -49,10 +49,10 @@
             align-items: center;
             font-size: 24px;
             font-weight: bold;
-            background-color: #87CEEB;
+            background-color: #ffb6c1;
             color: white;
             cursor: pointer;
-            border: 2px solid #4682B4;
+            border: 2px solid #ff69b4;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
         }
@@ -64,7 +64,7 @@
         .message {
             display: none;
             font-size: 20px;
-            color: #4682B4;
+            color: #ff1493;
             margin-top: 20px;
         }
     </style>
@@ -72,17 +72,17 @@
 <body>
     <div class="container">
         <h1>ola maria</h1>
-        <p>no me abandones de nuevo :C</p>
+        <p>te amo, nunca me abandones</p>
         <div class="puzzle-container" id="puzzle-container">
             <!-- Las piezas del puzzle se generan aquí -->
         </div>
-        <div class="message" id="message">Te quiero mucho, mi amor.</div>
+        <div class="message" id="message">¡Te amo con todo mi corazón!</div>
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const puzzleContainer = document.getElementById('puzzle-container');
             const messageElement = document.getElementById('message');
-            const solution = ['T', 'e', ' ', 'q', 'u', 'i', 'e', 'r', 'o'];
+            const solution = ['T', 'e', ' ', 'a', 'm', 'o', ' ', '♥', '!'];
             const shuffled = [...solution];
             shuffle(shuffled);
 
