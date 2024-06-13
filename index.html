@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>de linito para maria</title>
+    <title>Puzzle Romántico</title>
     <style>
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif;
@@ -71,8 +71,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>ola maria</h1>
-        <p>te adoro, no me abandones</p>
+        <h1>Puzzle Romántico</h1>
+        <p>Arrastra y suelta las piezas para formar el mensaje:</p>
         <div class="puzzle-container" id="puzzle-container">
             <!-- Las piezas del puzzle se generan aquí -->
         </div>
@@ -96,6 +96,11 @@
                 piece.addEventListener('dragover', handleDragOver);
                 piece.addEventListener('drop', handleDrop);
                 piece.addEventListener('dragend', handleDragEnd);
+
+                // Eventos táctiles para dispositivos móviles
+                piece.addEventListener('touchstart', handleTouchStart, { passive: false });
+                piece.addEventListener('touchmove', handleTouchMove, { passive: false });
+                piece.addEventListener('touchend', handleTouchEnd);
 
                 puzzleContainer.appendChild(piece);
             });
@@ -122,6 +127,29 @@
             }
 
             function handleDragEnd() {
+                this.classList.remove('dragging');
+                checkOrder();
+            }
+
+            function handleTouchStart(e) {
+                e.preventDefault();
+                draggedPiece = this;
+                this.classList.add('dragging');
+            }
+
+            function handleTouchMove(e) {
+                e.preventDefault();
+                const touchLocation = e.targetTouches[0];
+                const element = document.elementFromPoint(touchLocation.clientX, touchLocation.clientY);
+                if (element && element.classList.contains('puzzle-piece') && element !== draggedPiece) {
+                    const allPieces = [...puzzleContainer.querySelectorAll('.puzzle-piece')];
+                    const draggedIndex = allPieces.indexOf(draggedPiece);
+                    const droppedIndex = allPieces.indexOf(element);
+                    puzzleContainer.insertBefore(draggedPiece, droppedIndex > draggedIndex ? element.nextSibling : element);
+                }
+            }
+
+            function handleTouchEnd() {
                 this.classList.remove('dragging');
                 checkOrder();
             }
