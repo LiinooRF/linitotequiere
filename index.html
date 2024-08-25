@@ -1,26 +1,77 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica con Lino</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e0f7fa; /* Color de fondo suave */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 {
+            color: #00796b; /* Color de encabezado */
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        input[type="text"] {
+            padding: 12px;
+            font-size: 18px;
+            width: calc(100% - 24px); /* Ajustar el ancho con el padding */
+            box-sizing: border-box;
+            border: 2px solid #00796b;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            outline: none;
+        }
+        input[type="text"]:focus {
+            border-color: #004d40;
+        }
+        button {
+            padding: 12px 24px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            margin: 5px;
+            color: #ffffff;
+            background-color: #00796b;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #004d40;
+        }
+        #feedback {
+            margin-top: 15px;
+            font-size: 18px;
+            color: #d32f2f; /* Color para el feedback */
+        }
+    </style>
 </head>
-
-<body style="vertical-align:middle;">
-  <center>
-    <table height="100%" border="0"><tr><td valign="middle">
-
-    <table valign="middle" border="10" cellpadding="10">
-      <tr>
-        <td>
-          <h1>Hello Speller. Welcome to Spelling Bee.</h1>
-
-          <br>
-          <h3><a href="spelling.html">Click Here to Get Started</a></h3>
-        </td>
-      </tr>
-    </table>
-
-  </td></tr></table>
-  </center>
+<body>
+    <div class="container">
+        <h1>Practica con Lino</h1>
+        <div id="wordDisplay">Press the button to get a word.</div>
+        <input type="text" id="userInput" placeholder="Escribe la palabra aquí">
+        <button onclick="speakWord()">escuchar again</button>
+        <button onclick="checkWord()">check</button>
+        <button onclick="nextWord()">Siguiente uwu</button>
+        <div id="feedback"></div>
+    </div>
+    <script src="spell.js"></script>
 </body>
-
 </html>
