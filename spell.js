@@ -1,147 +1,98 @@
-var testArray = null;
-var currentWordNumber = 1;
-var currentWord = null;
-var numCorrect = 0;
-var numIncorrect = 0;
-var badHistory = null;
+// List of words to practice
+const words = [
+    'Ability', 'Abolition', 'Abortion', 'Acceptable', 'Absent', 'Abstract', 'Academic', 'Accept', 'Accidental',
+    'Achievement', 'Acquire', 'Activate', 'Admission', 'Advantage', 'Adventure', 'Adverbial', 'Advertisement',
+    'Affection', 'Against', 'Align', 'Ambassador', 'Ambulance', 'Amount', 'Annual', 'Appear', 'Appetizer',
+    'Appointment', 'Approach', 'Approval', 'Audience', 'Autumn', 'Babysitter', 'Backwards', 'Baggage', 'Balance',
+    'Basement', 'Bartender', 'Beast', 'Beautifully', 'Before', 'Behave', 'Behind', 'Belongings', 'Beneficial',
+    'Beyond', 'Bilingual', 'Biography', 'Blanket', 'Bleed', 'Boomerang', 'Bottle', 'Brave', 'Breathing',
+    'Briefly', 'Brightness', 'Brotherhood', 'Browse', 'Bruise', 'Bumper', 'Calculate', 'Cameraman', 'Campfire',
+    'Cancellation', 'Canyon', 'Capable', 'Cardiologist', 'Cardboard', 'Catalogue', 'Caterpillar', 'Cattle',
+    'Cautious', 'Ceremony', 'Challenge', 'Chamber', 'Champion', 'Character', 'Chemical', 'Childhood', 'Chimney',
+    'Chimpanzee', 'Chubby', 'Climbing', 'Closely', 'Clothes', 'Companion', 'Colonization', 'Comfortably',
+    'Community', 'Concentration', 'Concern', 'Connection', 'Constitute', 'Conversation', 'Cooperation', 'Correction',
+    'Critically', 'Creative', 'Crisis', 'Cultivate', 'Curiosity', 'Daily', 'Dangerous', 'Daylight', 'Deadline',
+    'Dearest', 'Deathly', 'Deceive', 'Deception', 'Decimal', 'Decompression', 'Decrease', 'Defence', 'Definitely',
+    'Democracy', 'Demonstrate', 'Denominator', 'Department', 'Delicious', 'Demanding', 'Descendant', 'Disagreement',
+    'Disappoint', 'Discipline', 'Daughter', 'Discussion', 'Documentary', 'Domain', 'Doorstep', 'Double', 'Doubt',
+    'Duplicity', 'Earache', 'Earnings', 'Easily', 'Eccentric', 'Egocentric', 'Elbow', 'Election', 'Extinguish',
+    'Emerald', 'Expansion', 'Educate', 'Electricity', 'Element', 'Empathy', 'Employment', 'Encouragement',
+    'Engagement', 'Enhance', 'Enjoyment', 'Enthusiastic', 'Envelope', 'Equation', 'Emptiness', 'Entirely',
+    'Exception', 'Environment', 'Example', 'Excitement', 'Explosion', 'Exterior', 'Expect', 'Fabulous', 'Fairly',
+    'Facilitator', 'Familiar', 'Fancy', 'Fantasy', 'Fashionable', 'Fearless', 'Fierce', 'Fingerprint', 'Fireproof',
+    'Fisherman', 'Fitness', 'Folder', 'Flight', 'Foolish', 'Foreigner', 'Forecast', 'Forget', 'Forgive', 'Failure',
+    'Fortunately', 'Forward', 'Freeze', 'Friendship', 'Frighten', 'Fuel', 'Further', 'Gallon', 'Genuine', 'Gesture',
+    'Government', 'Gradual', 'Greasy', 'Hamburger', 'Headache', 'Hospitality', 'Harvest', 'Headquarters', 'Heroes',
+    'Heaven', 'Height', 'Horizon', 'Huge', 'Hyperactive', 'Ignore', 'Imagination', 'Immediate', 'Importation',
+    'Improvement', 'Indication', 'Ingredient', 'Intention', 'Internal', 'Interview', 'Invisible', 'Invitation',
+    'Involve', 'Jealous', 'Journey', 'Jury', 'Knowledge', 'Languages', 'Laughter', 'Liberty', 'Liquefy', 'Length',
+    'Laboratory', 'Location', 'Management', 'Manner', 'Material', 'Manually', 'Measure', 'Memories', 'Mention',
+    'Minus', 'Mountain', 'Message', 'Misunderstand', 'Mischief', 'Mysterious', 'Multiply', 'Musical', 'Museum',
+    'Musician', 'Mutation', 'Mythology', 'Magazine', 'Necessary', 'Northern', 'Noisily', 'Negotiate', 'Novel',
+    'Numerator', 'Obtain', 'Opposite', 'Official', 'Oxygen', 'Original', 'Outline', 'Partial', 'Paragraph',
+    'Passenger', 'Perfection', 'Photography', 'Performance', 'Physics', 'Personal', 'Pleasant', 'Pleasure',
+    'Privilege', 'Plumber', 'Poetic', 'Plentiful', 'Policy', 'Pollute', 'Political', 'Potatoes', 'Poison', 'Possible',
+    'Pressure', 'Privacy', 'Probably', 'Protection', 'Process', 'Prodigy', 'Purchase', 'Purse', 'Question',
+    'Randomly', 'Raspberry', 'Recipe', 'Recently', 'Reality', 'Reform', 'Regional', 'Regardless', 'Reliable',
+    'Rehearse', 'Relief', 'Remain', 'Remarkable', 'Replicate', 'Replacement', 'Recommend', 'Requirement',
+    'Retirement', 'Response', 'Resident', 'Respectful', 'Review', 'Reasonable', 'Roughly', 'Rhythm', 'Security',
+    'Satisfaction', 'Square', 'Science', 'Scissors', 'Secretary', 'Several', 'Separately', 'Sincere', 'Settle',
+    'Squeeze', 'Shorten', 'Slippery', 'Sporadic', 'Sketch', 'Skillful', 'Substitute', 'Southern', 'Spaghetti',
+    'Slice', 'Seizure', 'Sponge', 'Souvenir', 'Stammer', 'Sandwich', 'Statement', 'Strength', 'Struggle',
+    'Supervisor', 'Success', 'Support', 'Surrounded', 'Survey', 'Systematic', 'Television', 'Temperature', 'Theme',
+    'Thickness', 'Themselves', 'Therapy', 'Thieve', 'Thoughtful', 'Threatening', 'Throughout', 'Triangle', 'Tutor',
+    'Unbelievable', 'Usefully', 'Underneath', 'Untie', 'Variety', 'Version', 'Valuable', 'Vampire', 'Violence',
+    'Visible', 'Vision', 'Wheat', 'Whoever', 'Wrinkle'
+];
 
-// Shuffle function to randomize array elements
-function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
-    while (0 !== currentIndex) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
+
+let currentWord = '';
+
+function speakWord() {
+    if (!currentWord) return;
+
+    // Crear un nuevo objeto SpeechSynthesisUtterance
+    const utterance = new SpeechSynthesisUtterance(currentWord);
+
+    // Establecer el idioma a inglés británico
+    utterance.lang = 'en-GB';
+
+    // Obtener la lista de voces disponibles y establecer una voz británica
+    const voices = window.speechSynthesis.getVoices();
+    const britishVoice = voices.find(voice => voice.name.includes('British'));
+    if (britishVoice) {
+        utterance.voice = britishVoice;
     }
-    return array;
+
+    // Hablar la palabra
+    window.speechSynthesis.speak(utterance);
 }
 
-// Function to speak the word
-function speakWord(msg) {
-    if (msg == null) return;
-    var speech = new SpeechSynthesisUtterance(msg);
-    speech.lang = 'en-GB';
-    var voices = window.speechSynthesis.getVoices();
-    speech.default = false;
-    speech.voice = voices.filter(function(voice) {
-        return voice.name == 'Google UK English Male';
-    })[0];
-    window.speechSynthesis.speak(speech);
-}
-
-function getMaxWords(array) {
-    if (array == null || array.length == 0) return 0;
-    var max = array.length - 1;
-    if (max > 50) max = 50;
-    return max;
-}
-
-function updateProgress() {
-    if (testArray == null) return;
-    var max = getMaxWords(testArray);
-    if (currentWordNumber > 0 && currentWordNumber <= max) {
-        document.getElementById("numCurrent").innerHTML = currentWordNumber;
-    }
-    document.getElementById("numTotal").innerHTML = max;
-    document.getElementById("numCorrect").innerHTML = numCorrect;
-    document.getElementById("numIncorrect").innerHTML = numIncorrect;
-    document.getElementById("spellText").value = "";
-    document.getElementById("spellText").focus();
-}
-
-function startTest() {
-    fetch('https://pastebin.com/raw/MzG3K2Mu') // URL de tu archivo raw en Pastebin
-        .then(response => response.text())
-        .then(data => {
-            testArray = shuffle(data.split("\n").map(word => word.trim()).filter(word => word.length > 0));
-            if (testArray == null) {
-                alert("Unexpected level!");
-                return;
-            }
-            badHistory = [];
-            var max = getMaxWords(testArray);
-            document.getElementById("currentLevel").innerHTML = "Custom";
-            document.getElementById("totalWords").innerHTML = max;
-
-            document.getElementById("levelSelect").className = "hide";
-            document.getElementById("testArea").className = "show";
-            document.getElementById("txtEntryArea").className = "show";
-            document.getElementById("spellText").focus();
-
-            runTest();
-        });
-}
-
-function runTest() {
-    if (testArray == null) {
-        alert("Bad test");
+function nextWord() {
+    if (words.length === 0) {
+        document.getElementById('wordDisplay').innerText = 'No words available.';
         return;
     }
-    var max = getMaxWords(testArray);
-    if (currentWordNumber < 1 || currentWordNumber > max + 1) {
-        return;
-    }
-    updateProgress();
-    if (currentWordNumber == max + 1) {
-        document.getElementById("txtEntryArea").className = "hide";
-        return;
-    }
-    currentWord = testArray[currentWordNumber - 1];
-    speakWord(currentWord);
+
+    // Obtener una palabra aleatoria de la lista
+    currentWord = words[Math.floor(Math.random() * words.length)];
+    
+    // Hablar la palabra sin mostrarla
+    speakWord();
+
+    // Limpiar el campo de entrada y el feedback
+    document.getElementById('feedback').innerText = '';
+    document.getElementById('userInput').value = '';
+    document.getElementById('userInput').focus();
 }
 
-function errorReport() {
-    if (badHistory == null) return;
-    var hist = document.getElementById("historyReport");
-    var rpt = "<table border=1><tr><td>Word</td><td>You Typed</td></tr></tr>";
-    for (var i = 0; i < badHistory.length; i = i + 2) {
-        rpt += "<tr><td>" + badHistory[i] + "</td><td>" + badHistory[i + 1] + "</td></tr>";
-    }
-    rpt += "</td>";
-    hist.innerHTML = rpt;
-    hist.className = "show";
-}
-
-function checkSpell(e, text) {
-    var key = e.keyCode || e.which;
-    if (key == 13) { // Enter key
-        if (text != "" && text != null) {
-            text = text.trim();
-            if (text == currentWord) {
-                numCorrect++;
-            } else {
-                numIncorrect++;
-                badHistory.push(currentWord);
-                badHistory.push(text);
-                errorReport();
-            }
-            currentWordNumber++;
-            runTest();
-        }
+function checkWord() {
+    const userInput = document.getElementById('userInput').value.trim();
+    if (userInput === currentWord) {
+        document.getElementById('feedback').innerText = 'Correcto!';
+    } else {
+        document.getElementById('feedback').innerText = 'Incorrect. la palabra es: ' + currentWord;
     }
 }
-
-function startOver() {
-    document.getElementById("levelSelect").className = "show";
-    document.getElementById("testArea").className = "hide";
-    document.getElementById("historyReport").className = "hide";
-    currentWordNumber = 1;
-    currentWord = null;
-    numCorrect = 0;
-    numIncorrect = 0;
-    testArray = null;
-    document.getElementById("spellText").value = "";
-}
-
-function getCheckedValue(name) {
-    var x = document.getElementsByName(name);
-    var i;
-    for (i = 0; i < x.length; i++) {
-        if (x[i].checked == true) {
-            return x[i].value;
-        }
-    }
-    return "";
-}
+// Initialize the word list with a first word when the page loads
+window.onload = nextWord;
