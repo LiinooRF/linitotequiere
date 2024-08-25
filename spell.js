@@ -87,11 +87,13 @@ function nextWord() {
 }
 
 function checkWord() {
-    const userInput = document.getElementById('userInput').value.trim();
-    if (userInput === currentWord) {
-        document.getElementById('feedback').innerText = 'Correcto!';
+    const userInput = document.getElementById('userInput').value.trim().toLowerCase(); // Convierte la entrada del usuario a minúsculas
+    const wordToCheck = currentWord.toLowerCase(); // Convierte la palabra actual a minúsculas
+
+    if (userInput === wordToCheck) {
+        document.getElementById('feedback').innerText = 'Correct!';
     } else {
-        document.getElementById('feedback').innerText = 'Incorrect. la palabra es: ' + currentWord;
+        document.getElementById('feedback').innerText = 'Incorrecto bro la palabra es: ' + currentWord;
     }
 }
 // Initialize the word list with a first word when the page loads
