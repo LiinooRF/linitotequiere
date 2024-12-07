@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Cambios Al Norte</title>
     <style>
-        /* General */
+        /* Estilo general */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -21,82 +21,97 @@
         /* Contenedor principal */
         .container {
             background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con transparencia */
-            padding: 30px;
+            padding: 40px;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 400px;
+            max-width: 500px;
             text-align: center;
+            box-sizing: border-box;
         }
 
         /* Título */
         h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
+            font-size: 26px;
+            margin-bottom: 30px;
             color: #333;
+            font-weight: bold;
         }
 
         /* Grupo de entrada */
         .input-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .input-group label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
             font-weight: bold;
             color: #333;
         }
 
         .input-group input {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 2px solid #ddd;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 18px;
             box-sizing: border-box;
             color: #333;
+            background-color: #f9f9f9;
         }
 
         /* Resultado */
         .result {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: bold;
             color: #28a745;
-            margin-top: 20px;
+            margin-top: 30px;
         }
 
         /* Botón */
         .button {
             width: 100%;
-            padding: 12px;
+            padding: 16px;
             background-color: #007bff;
             color: white;
             border: none;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 18px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.3s;
+            box-sizing: border-box;
         }
 
         .button:hover {
             background-color: #0056b3;
+            transform: scale(1.05);
         }
 
-        /* Responsividad */
-        @media (max-width: 480px) {
+        /* Estilo responsive */
+        @media (max-width: 600px) {
             .container {
                 padding: 20px;
                 width: 100%;
+                margin: 0;
             }
 
             h1 {
-                font-size: 20px;
+                font-size: 22px;
             }
 
             .button {
-                font-size: 14px;
+                font-size: 16px;
+            }
+
+            .input-group input {
+                padding: 12px;
+                font-size: 16px;
+            }
+
+            .result {
+                font-size: 18px;
             }
         }
 
@@ -113,6 +128,8 @@
         <input type="text" id="clp" placeholder="Ingresa cantidad en CLP" oninput="formatearInput(event, 'clp')" required>
         <button class="button" onclick="convertirCLPtoBs()">Convertir a Bs</button>
     </div>
+
+    <!-- Resultado -->
     <div class="result" id="resultadoCLPtoBs"></div>
 </div>
 
