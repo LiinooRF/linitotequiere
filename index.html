@@ -3,174 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Cambios Al Norte</title>
+    <title>PDF</title>
     <style>
-        /* Estilo general */
         body {
-            font-family: 'Arial', sans-serif;
             margin: 0;
-            padding: 0;
-            background: linear-gradient(to right, #ff8c00, #ff4c00); /* Fondo de gradiente */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color: #fff;
+            padding: 20px;
+            font-family: Arial, sans-serif;
         }
-
-        /* Contenedor principal */
-        .container {
-            background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con transparencia */
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        
+        iframe {
             width: 100%;
-            max-width: 500px;
-            text-align: center;
-            box-sizing: border-box;
-        }
-
-        /* Título */
-        h1 {
-            font-size: 26px;
-            margin-bottom: 30px;
-            color: #333;
-            font-weight: bold;
-        }
-
-        /* Grupo de entrada */
-        .input-group {
-            margin-bottom: 25px;
-        }
-
-        .input-group label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .input-group input {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 15px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 18px;
-            box-sizing: border-box;
-            color: #333;
-            background-color: #f9f9f9;
-        }
-
-        /* Resultado */
-        .result {
-            font-size: 20px;
-            font-weight: bold;
-            color: #28a745;
-            margin-top: 30px;
-        }
-
-        /* Botón */
-        .button {
-            width: 100%;
-            padding: 16px;
-            background-color: #007bff;
-            color: white;
+            height: 90vh;
             border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-            box-sizing: border-box;
         }
-
-        .button:hover {
-            background-color: #0056b3;
-            transform: scale(1.05);
-        }
-
-        /* Estilo responsive */
-        @media (max-width: 600px) {
-            .container {
-                padding: 20px;
-                width: 100%;
-                margin: 0;
-            }
-
-            h1 {
-                font-size: 22px;
-            }
-
-            .button {
-                font-size: 16px;
-            }
-
-            .input-group input {
-                padding: 12px;
-                font-size: 16px;
-            }
-
-            .result {
-                font-size: 18px;
-            }
-        }
-
     </style>
 </head>
 <body>
-
-<div class="container">
-    <h1>Calculadora Cambios Al Norte</h1>
-
-    <!-- CLP a Bs -->
-    <div class="input-group">
-        <label for="clp">Cantidad en CLP</label>
-        <input type="text" id="clp" placeholder="Ingresa cantidad en CLP" oninput="formatearInput(event, 'clp')" required>
-        <button class="button" onclick="convertirCLPtoBs()">Convertir a Bs</button>
-    </div>
-
-    <!-- Resultado -->
-    <div class="result" id="resultadoCLPtoBs"></div>
-</div>
-
-<script>
-    // Establecer tasa de CLP a Bs aquí
-    const tasaCLP = 0.0542; // Tasa de ejemplo, modifícala según tus necesidades
-
-    // Función para convertir CLP a Bs
-    function convertirCLPtoBs() {
-        let cantidadCLP = document.getElementById('clp').value.replace(/[.]/g, ''); // Eliminar los puntos
-        cantidadCLP = cantidadCLP.replace(',', '.'); // Asegurar que la coma sea decimal
-        const cantidadNumerica = parseFloat(cantidadCLP);
-
-        if (isNaN(cantidadNumerica) || cantidadNumerica <= 0) {
-            alert("Por favor ingresa una cantidad válida en CLP.");
-            return;
-        }
-
-        const resultado = cantidadNumerica * tasaCLP;
-        document.getElementById('resultadoCLPtoBs').innerText = `${formatearNumero(cantidadNumerica)} CLP = ${formatearNumero(resultado)} Bs`;
-    }
-
-    // Función para formatear los números con punto solo en los decimales
-    function formatearNumero(numero) {
-        // Convertir número a formato con punto en los decimales y sin separador de miles
-        return numero.toFixed(2).replace('.', ','); // Formato con coma en los decimales
-    }
-
-    // Función para formatear el input mientras el usuario escribe
-    function formatearInput(event, inputId) {
-        let inputValue = event.target.value.replace(/[^\d,]/g, ''); // Eliminar todo excepto números y coma
-        let parts = inputValue.split(',');
-
-        // Si tiene parte decimal, mantener solo un separador
-        if (parts.length > 1) {
-            parts[1] = parts[1].slice(0, 2); // Limitar a dos decimales
-        }
-
-        event.target.value = parts.join(',');
-    }
-</script>
-
+    <iframe src="Comunicación (1).pdf"></iframe>
 </body>
 </html>
