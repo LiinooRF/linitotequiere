@@ -1,24 +1,82 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 20px;
-            font-family: Arial, sans-serif;
-        }
-        
-        iframe {
-            width: 100%;
-            height: 90vh;
-            border: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>linitotequiere - PDF Viewer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      background: #d63384;
+      color: white;
+      width: 100%;
+      text-align: center;
+      padding: 1rem 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    main {
+      margin: 20px;
+      width: 95%;
+      max-width: 900px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    iframe {
+      width: 100%;
+      height: 90vh;
+      border: none;
+    }
+
+    .fallback {
+      text-align: center;
+      padding: 1em;
+      background: #fafafa;
+      border-top: 1px solid #ddd;
+    }
+
+    a.pdf-link {
+      color: #d63384;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a.pdf-link:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-    <iframe src="Comunicación (1).pdf"></iframe>
+  <header>
+    <h1>💌 Lini te quiere 💌</h1>
+  </header>
+
+  <main>
+    <!-- ✅ Cambia solo el nombre del PDF si es diferente -->
+    <iframe 
+      src="https://docs.google.com/gview?url=https://liinoorf.github.io/linitotequiere/docs/linitotequiere.pdf&embedded=true"
+      allowfullscreen>
+    </iframe>
+
+    <div class="fallback">
+      <p>Si no se carga el PDF, puedes abrirlo directamente aquí:</p>
+      <a class="pdf-link" href="https://liinoorf.github.io/linitotequiere/docs/linitotequiere.pdf" target="_blank" rel="noopener noreferrer">
+        Ver o descargar PDF
+      </a>
+    </div>
+  </main>
 </body>
 </html>
